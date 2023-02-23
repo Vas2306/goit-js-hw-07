@@ -1,8 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
-// console.log(galleryItems);
 
 const containerForImages = document.querySelector(".gallery");
-// console.log(containerForImages);
 
 const createGalleryMarkup = galleryItems
   .map(
@@ -22,22 +20,16 @@ const createGalleryMarkup = galleryItems
 
 containerForImages.insertAdjacentHTML("beforeend", createGalleryMarkup);
 
-containerForImages.addEventListener('click', onImageClick);
-
 function onImageClick(evt) {
-  if (evt.target.nodeName !== 'IMG') {
+  if (evt.target.nodeName !== "IMG") {
     return;
- }
+  }
   evt.preventDefault();
   const urlBigImage = evt.target.dataset.source;
+  const instance = basicLightbox.create(`
+    <img src="${urlBigImage}" width="800" height="600">
+`);
+  instance.show();
+}
 
-  console.log(urlBigImage);
-
-  console.log(evt.target);
-  console.log(evt.target.nodeName);
-  console.log(evt.target.classList.value);
-  console.log(evt.target.src);
-  console.log(evt.target.alt);
-  console.log(evt.target.dataset.source);
-};
- 
+containerForImages.addEventListener("click", onImageClick);
