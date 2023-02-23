@@ -13,13 +13,4 @@ const createGalleryMarkup = galleryItems
 
 containerForImages.insertAdjacentHTML("beforeend", createGalleryMarkup);
 
-function onImageClick(evt) {
-  if (evt.target.nodeName !== "IMG") {
-    return;
-  }
-  evt.preventDefault();
-}
-
-containerForImages.addEventListener("click", onImageClick);
-
 var lightbox = new SimpleLightbox(".gallery a", { captionDelay: 250 });
